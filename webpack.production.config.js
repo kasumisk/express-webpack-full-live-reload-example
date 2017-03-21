@@ -4,8 +4,8 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var productionConfig = [{
     entry: {
-        page1: './client/page1',
-        page2: './client/page2'
+        page1: './client/home',
+        page2: './client/admin'
     },
     output: {
         filename: './[name]/bundle.js',
