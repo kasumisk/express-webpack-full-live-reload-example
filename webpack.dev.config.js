@@ -21,6 +21,15 @@ module.exports = {
     ],
     module: {
         rules: [
+           {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader?sourceMap',
+                    'resolve-url-loader',
+                    'sass-loader?sourceMap'
+                ]
+            },
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',

@@ -1,12 +1,12 @@
-import Admin from './views/Admin'
-import Hello from './views/admin/Hello'
-import Menu from './views/admin/Menu'
-import Table from './views/admin/Table'
-import Time from './views/admin/Time'
-import App from './App'
-import User from './views/User'
-import Game from './views/Game'
-import Login from './views/Login'
+import Admin from './views/Admin.vue'
+import Hello from './views/admin/Hello.vue'
+import Menu from './views/admin/Menu.vue'
+import Table from './views/admin/Table.vue'
+import Time from './views/admin/Time.vue'
+import App from './App.vue'
+import User from './views/User.vue'
+import Game from './views/Game.vue'
+import Login from './views/Login.vue'
 
 
 

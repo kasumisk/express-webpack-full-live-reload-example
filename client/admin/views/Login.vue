@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>{{webName}}</h2>
+    <h2>{{webName}}1</h2>
     <el-input
   placeholder="请输入账号"
   icon="user"

@@ -4,8 +4,8 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var productionConfig = [{
     entry: {
-        page1: './client/home',
-        page2: './client/admin'
+        home: ['./client/home'],
+        admin: ['./client/admin/main.js']
     },
     output: {
         filename: './[name]/bundle.js',
@@ -13,16 +13,55 @@ var productionConfig = [{
         publicPath: '/'
     },
     module: {
-        rules: [{
-            test: /\.(png|jpg)$/,
-            use: 'url-loader?limit=8192&context=client&name=[path][name].[ext]'
-        }, {
-            test: /\.scss$/,
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: ['css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
-            })
-        }]
+        rules: [
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader?sourceMap',
+                    'resolve-url-loader',
+                    'sass-loader?sourceMap'
+                ]
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
+                        // the "scss" and "sass" values for the lang attribute to the right configs here.
+                        // other preprocessors should work out of the box, no loader config like this necessary.
+                        'scss': 'vue-style-loader!css-loader!sass-loader',
+                        'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+                    }
+                    // other vue-loader options go here
+                }
+            },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]?[hash]'
+                }
+            }
+        ]
+    },
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        }
+    },
+    devServer: {
+        historyApiFallback: true,
+        noInfo: true
+    },
+    performance: {
+        hints: false
     },
     plugins: [
         new CleanWebpackPlugin(['public']),
@@ -34,3 +73,7 @@ var productionConfig = [{
 }];
 
 module.exports = productionConfig;
+
+
+
+
