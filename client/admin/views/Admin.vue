@@ -2,7 +2,7 @@
   <div>
     <nv-head></nv-head>
     <div class="nav">
-      <router-link :to="{ name: 'user', params: { id: page }}">user11</router-link>
+      <router-link :to="{ name: 'user', params: { id: page }}">user1222...</router-link>
       <router-link to="/admin/game">game</router-link>
       <router-link to="/admin/menu">admin</router-link>
     </div>
